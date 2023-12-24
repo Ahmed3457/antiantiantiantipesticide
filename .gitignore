@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 weather.png
 weather.sqlite
+token.txt
