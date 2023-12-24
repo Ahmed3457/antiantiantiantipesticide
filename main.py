@@ -38,8 +38,8 @@ async def weather(
     try:
         lat = float(latitude)
         lon = float(longitude)
-    except e:
-        print(e)
+    except:
+        pass
     status = untitlable(lat=latitude, lon=longitude)
     if status == True:
         await interaction.followup.send(file=nextcord.File("weather.png"))
