@@ -1,6 +1,7 @@
 import nextcord
 from nextcord.ext import commands
 from lib import untitlable
+from threading import Thread
 
 token_file = open(
     "token.txt", 
@@ -35,11 +36,12 @@ async def weather(
 ):
         
     await interaction.response.defer()
-    try:
-        lat = float(latitude)
-        lon = float(longitude)
-    except:
-        pass
+    if not longitude or not latitude:
+        latitude = 55.7522200
+        longitude = 37.6155600
+    else:
+        latitude = float(latitude)
+        longitude = float(longitude)
     status = untitlable(lat=latitude, lon=longitude)
     if status == True:
         await interaction.followup.send(file=nextcord.File("weather.png"))
